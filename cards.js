@@ -1,8 +1,8 @@
 // console.log("Hello Card Result !");
 
-const arr = []
 
 const div = document.querySelector("#checkOut")
+const arr = []
 
 
 const data = localStorage.getItem("cards")
@@ -14,36 +14,33 @@ console.log(convert);
 
 convert.map((items, index) => {
 
-    
     div.innerHTML += `
-    <div class="cards border border-white p-5 rounded bg-light-subtle color-white">
+        <div class="cards mt-3 border border-2 border-info p-5 rounded bg-light-subtle color-white">
 
-    <div class="d-flex p-2">
-    <img src="${items.image}" alt="${items.model}" class="phone-image" />
-    </div>
+            <div class="d-flex p-2">
+                <img src="${items.image}" alt="${items.model}" class="phone-image" />
+            </div>
 
-    <h1 class="border-bottom border-info">Brand : ${items.brand} </h1>
-    <h1 class="border-bottom border-info">Model : ${items.model}</h1>
-    <h1 class="border-bottom border-info">Ram : ${items.ram} </h1>
-    <h1 class="border-bottom border-info">Rom : ${items.rom} </h1>
-    <h1 class="border-bottom border-info">Camra : ${items.camera} </h1>
-    <h1 id="price${index}">Price : $ ${items.price} </h1>
+            <h2 class="border-bottom border-info">Brand : ${items.brand} </h2>
+            <h2 class="border-bottom border-info">Model : ${items.model}</h2>
+            <h2 class="border-bottom border-info">Ram : ${items.ram} </h2>
+            <h2 class="border-bottom border-info">Rom : ${items.rom} </h2>
+            <h2 class="border-bottom border-info">Camra : ${items.camera} </h2>
+            <h2 id="price${index}">Price : $ ${items.price} </h2>
 
-    <h1 class="d-flex gap-3" > Quantity : 
+            <h2 class="d-flex gap-3" > Quantity : 
+                <button class="btn btn-primary mt-3" onclick = "increase(${index})"> + </button>
+                <span id="digit-${index}"> 1 </span> 
+                <button class="btn btn-primary mt-3" onclick = "decrease(${index})"> - </button>
+            </h2>
     
-    <button class="btn btn-primary mt-3" onclick = "increase(${index})"> + </button>
-    <span id="digit-${index}"> 1 </span> 
-    <button class="btn btn-primary mt-3" onclick = "decrease(${index})"> - </button>
+            <button class="btn btn-primary mt-3" onclick="deleteCard(${index})">Delete</button>
 
-    </h1>
-    
-    <button class="btn btn-primary mt-3" onclick="deleteCard(${index})">Delete</button>
+            <button class="btn btn-primary mt-3" onclick="buyNow(${index})">Buy Now</button>
 
-    <button class="btn btn-primary mt-3" onclick="buyNow(${index})">Buy Now</button>
-
-    </div>
+        </div>
     ` 
-    
+
 })
 
 
@@ -57,6 +54,7 @@ function increase(index) {
 
     price.innerHTML = `Price :  $ ${convert[index].price * addNumber.innerHTML};`
 }
+
 
 function decrease(index) {
     
@@ -82,34 +80,32 @@ function deleteCard (index) {
 
     convert.map((items, index) => {
 
-    div.innerHTML += `
+        div.innerHTML += `
        
-        <div class="cards border border-white p-5 rounded bg-light-subtle color-white">
+            <div class="cards border border-white p-5 rounded bg-light-subtle color-white">
     
-        <div class="d-flex p-2">
-        <img src="${items.image}" alt="${items.model}" class="phone-image" />
-        </div>
+                <div class="d-flex p-2">
+                    <img src="${items.image}" alt="${items.model}" class="phone-image" />
+                </div>
     
-        <h1 class="border-bottom border-info">Brand : ${items.brand} </h1>
-        <h1 class="border-bottom border-info">Model : ${items.model}</h1>
-        <h1 class="border-bottom border-info">Ram : ${items.ram} </h1>
-        <h1 class="border-bottom border-info">Rom : ${items.rom} </h1>
-        <h1 class="border-bottom border-info">Camra : ${items.camera} </h1>
-        <h1 class="border-bottom border-info" id="price${index}">Price : $ ${items.price} </h1>
+                <h2 class="border-bottom border-info">Brand : ${items.brand} </h2>
+                <h2 class="border-bottom border-info">Model : ${items.model}</h2>
+                <h2 class="border-bottom border-info">Ram : ${items.ram} </h2>
+                <h2 class="border-bottom border-info">Rom : ${items.rom} </h2>
+                <h2 class="border-bottom border-info">Camra : ${items.camera} </h2>
+                <h2 class="border-bottom border-info" id="price${index}">Price : $ ${items.price} </h2>
     
-        <h1 class="d-flex gap-3" > Quantity : 
+                <h2 class="d-flex gap-3" > Quantity : 
+                    <button class="btn btn-primary mt-3" onclick = "increase(${index})"> + </button>
+                    <span id="digit-${index}" class="price-${index}"> 1 </span> 
+                    <button class="btn btn-primary mt-3" onclick = "decrease(${index})"> - </button>
+                </h2>
         
-        <button class="btn btn-primary mt-3" onclick = "increase(${index})"> + </button>
-        <span id="digit-${index}" class="price-${index}"> 1 </span> 
-        <button class="btn btn-primary mt-3" onclick = "decrease(${index})"> - </button>
-    
-        </h1>
-        
-        <button class="btn btn-primary mt-3" onclick="deleteCard(${index})">Delete</button>
+                <button class="btn btn-primary mt-3" onclick="deleteCard(${index})">Delete</button>
 
-        <button class="btn btn-primary mt-3" onclick="buyNow(${index})">Buy Now</button>
+                <button class="btn btn-primary mt-3" onclick="buyNow(${index})">Buy Now</button>
 
-        </div>
+            </div>
         `
 
     })
@@ -118,10 +114,9 @@ function deleteCard (index) {
         title: "No problem OR Dont worry",
         text: "Your item has deleted !",
         icon: "success",
-      });
+    });
 
 }
-
 
 
 function buyNow(index) {
@@ -135,7 +130,7 @@ function buyNow(index) {
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
         confirmButtonText: "Yes, buy it!"
-      }).then((result) => {
+    }).then((result) => {
         if (result.isConfirmed) {
           Swal.fire({
             title: "Thanks For Shopping!",
@@ -143,18 +138,6 @@ function buyNow(index) {
             icon: "success"
           });
         }
-      });
+    });
     
 }
-
-
-
-/* This is a spread opreator Working */
-
-
-// const num1 = [1, 2, 3];
-// const num2 = [4, 5, 6];
-
-// const newArr = [...num1, ...num2]
-
-// console.log(newArr);
